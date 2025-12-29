@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AutoConductor</title>
+
+<style>
+body{
+  background:#0b1221;
+  color:white;
+  font-family:Arial;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.card{
+  background:#111d3a;
+  padding:30px;
+  border-radius:20px;
+  width:340px;
+  text-align:center;
+  box-shadow:0 0 20px #1a2b5a;
+}
+
+h1{
+  margin-bottom:10px;
+}
+
+input,select{
+  width:90%;
+  padding:8px;
+  border-radius:8px;
+  border:none;
+  margin-top:8px;
+}
+
+button{
+  padding:10px 20px;
+  border-radius:10px;
+  border:none;
+  font-size:16px;
+  cursor:pointer;
+  margin-top:12px;
+}
+
+.ticketBox{
+  margin-top:15px;
+  padding:10px;
+  background:#0b1a33;
+  border-radius:12px;
+}
+
+.hide{
+  display:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🚌 AutoConductor</h1>
+<p>Smart bus ticket system</p>
+
+<select id="from">
+<option value="Stop A">Stop A</option>
+<option value="Stop B">Stop B</option>
+<option value="Stop C">Stop C</option>
+</select>
+
+<select id="to">
+<option value="Stop D">Stop D</option>
+<option value="Stop E">Stop E</option>
+<option value="Stop F">Stop F</option>
+</select>
+
+<input id="distance" type="number" placeholder="Enter distance in km">
+
+<button onclick="book()">Book Ticket 🎫</button>
+
+<div id="ticket" class="ticketBox hide">
+<h3>Ticket Generated</h3>
+<p id="tid"></p>
+<p id="f"></p>
+<p id="t"></p>
+<p id="fare"></p>
+</div>
+
+</div>
+
+<script>
+let id = 1;
+
+function book(){
+
+ let from = document.getElementById("from").value;
+ let to = document.getElementById("to").value;
+ let km = document.getElementById("distance").value;
+
+ if(km=="" || km<=0){
+    alert("Enter valid distance 😭");
+    return;
+ }
+
+ let fare = km * 2;   // ₹2 per km
+
+ document.getElementById("ticket").classList.remove("hide");
+
+ document.getElementById("tid").innerText = "Ticket ID: " + id++;
+ document.getElementById("f").innerText = "From: " + from;
+ document.getElementById("t").innerText = "To: " + to;
+ document.getElementById("fare").innerText = "Fare: ₹" + fare;
+}
+</script>
+
+</body>
+</html>
